@@ -14,3 +14,9 @@
 
 - Permutation hashing
 - Set hashing
+
+## 2021
+
+### C1
+
+- Greedy
