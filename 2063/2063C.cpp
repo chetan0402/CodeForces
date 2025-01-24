@@ -25,8 +25,6 @@ void solve(){
     for(int i=0;i<deg_to_i.size();i++){
         auto current_i=deg_to_i[i];
         if(i>0) if(deg_to_i[0].first-1>=current_i.first) break;
-        bool adj=false;
-        bool non=false;
         for(int j=i+1;j<deg_to_i.size();j++){
             auto current_j=deg_to_i[j];
             if(edges[current_i.second].count(current_j.second)==0){
@@ -34,9 +32,7 @@ void solve(){
                 break;
             }else{
                 ans=max(ans,current_i.first+current_j.first-2);
-                adj=true;
             }
-            if(non && adj) break;
         }
     }
     cout << ans << endl;
