@@ -67,3 +67,12 @@ def callTest(contest_id, problem_character):
     if(type(contest_id) != str):
         contest_id = str(contest_id)
     test_cpp_file("./" + contest_id + "/" + contest_id + problem_character + ".cpp")
+
+if __name__ == '__main__':
+    import sys
+    if len(sys.argv) != 3:
+        print("Usage: python test.py <contest_id> <problem_character>")
+        sys.exit(1)
+    contest_id = sys.argv[1]
+    problem_character = sys.argv[2]
+    callTest(contest_id, problem_character)
