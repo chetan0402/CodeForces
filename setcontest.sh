@@ -1,0 +1,1 @@
+export CONTEST=$1
