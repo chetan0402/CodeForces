@@ -2,15 +2,26 @@
 #include<vector>
 #include<unordered_map>
 #define int long long
+#define DEBUG(x) cout << x << " "
 using namespace std;
 
-bool failable(int n){
+int reduce(int n){
     unordered_map<int,int> factors;
-    for(int i=2;i<=n;i++) while(n%i==0){
-        n/=i;
-        factors[i]++;
+    int minF=1;
+    for(int i=2;i*i<=n;i++){
+        if(n%i==0 && minF==1) minF=i;
+        while(n%i==0){
+            n/=i;
+            factors[i]++;
+        }
+        if(factors.size()>1) return -1;
     }
-    return (factors.size()>1);
+    if(n>1){
+        if(minF==1) minF=n;
+        factors[n]++;
+        if(factors.size()>1) return -1;
+    }
+    return minF;
 }
 
 void solve(){
@@ -30,8 +41,9 @@ void solve(){
         return;
     }
 
-    for(auto num:arr){
-        if(failable(num)){
+    for(int i=0;i<n;i++){
+        arr[i]=reduce(arr[i]);
+        if(arr[i]==-1 || (i>0 && arr[i-1]>arr[i])){
             cout << "Alice" << endl;
             return;
         }
